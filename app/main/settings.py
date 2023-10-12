@@ -1,9 +1,7 @@
 import os
 #from environs import Env, EnvError
 
-# uncomment the line below for postgres database url from environment variable
-# postgres_local_base = 'postgresql+psycopg2://super:super_admin@parthverma-2936.postgres.pythonanywhere-services.com:12936/credpay'
-# postgres_local_base = 'postgresql://postgres:root@localhost:5432/credpay'
+
 
 #env = Env()
 #env.read_env()
