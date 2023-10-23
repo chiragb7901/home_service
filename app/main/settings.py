@@ -2,7 +2,7 @@ import os
 #from environs import Env, EnvError
 
 
-postgres_local_base= "postgres://home_server_user:SlLw6VqOGf7xW6hv9TOblNJfxqQ3hpqh@dpg-ckphaio5vl2c73f1u36g-a.oregon-postgres.render.com/home_server"
+postgres_local_base= "postgres:///" 
 #env = Env()
 #env.read_env()
 
