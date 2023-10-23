@@ -13,6 +13,7 @@ class User(db.Model):
     last_name = db.Column(db.String(50), nullable=False)
     city = db.Column(db.String(50))
     state = db.Column(db.String(50))
+    pincode = db.Column(db.String(50))
     address = db.Column(db.String(255))
     created_at =  db.Column(db.DateTime, default=datetime.utcnow,nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow,nullable=False)
@@ -35,8 +36,9 @@ class User(db.Model):
        db.session.commit()
        return self
     
-    def __init__(self, email, public_id, phone_number, first_name, last_name, city, state, address,hash_password, role):
+    def __init__(self, email, public_id, phone_number, first_name, last_name, city, state, address,hash_password, role, pincode):
         self.email = email
+        self.pincode = pincode
         self.phone_number = phone_number
         self.first_name = first_name
         self.last_name = last_name

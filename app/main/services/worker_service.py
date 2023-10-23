@@ -1,6 +1,6 @@
 from app.main.models import Worker
 from app.main.models import User
-import uuid 
+import uuid
 from  werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 from datetime import datetime, timedelta
@@ -11,12 +11,12 @@ from app.main.settings import Config
 class WorkerService:
     def __init__(self):
         pass
- 
+
     @staticmethod
     def get_all_worker_data():
         worker_entities = Worker.query.all()
         worker_entities_list = []
-        
+
         for user in worker_entities:
             user_dict = {}
             user_dict['public_id'] = user.public_id
@@ -31,7 +31,6 @@ class WorkerService:
             user_dict['address'] = user.address
             user_dict['created_at'] = user.created_at
             user_dict['updated_at'] = user.updated_at
-            user_dict['dob'] = user.dob
             user_dict['bank_acc_no'] = user.bank_acc_no
             user_dict['gender'] = user.gender
             user_dict['hash_password'] = user.hash_password
@@ -40,11 +39,13 @@ class WorkerService:
             user_dict['preferred_work'] = user.preferred_work
             user_dict['type_of_work'] = user.type_of_work
             user_dict['salary'] = user.salary
-            
+            user_dict['pincode'] = user.pincode
+            user_dict['status'] = user.status
+
             worker_entities_list.append(user_dict)
         return worker_entities_list
-    
- 
+
+
     @staticmethod
     def get_worker_by_id(id):
         worker_entities = Worker.query.filter_by(id=id)
@@ -64,7 +65,6 @@ class WorkerService:
             user_dict['address'] = user.address
             user_dict['created_at'] = user.created_at
             user_dict['updated_at'] = user.updated_at
-            user_dict['dob'] = user.dob
             user_dict['bank_acc_no'] = user.bank_acc_no
             user_dict['gender'] = user.gender
             user_dict['hash_password'] = user.hash_password
@@ -73,7 +73,9 @@ class WorkerService:
             user_dict['preferred_work'] = user.preferred_work
             user_dict['type_of_work'] = user.type_of_work
             user_dict['salary'] = user.salary
-            
+            user_dict['pincode'] = user.pincode
+            user_dict['status'] = user.status
+
             worker_entities_list.append(user_dict)
         return worker_entities_list
 
@@ -92,8 +94,9 @@ class WorkerService:
                 aadhar_number=data["aadhar_number"],
                 city=data["city"],
                 state=data["state"],
+                pincode=data["pincode"],
+                status="Pending",
                 address=data["address"],
-                dob=data["dob"],
                 bank_acc_no=data["bank_acc_no"],
                 gender=data["gender"],
                 available_Days=data["available_Days"],
@@ -114,8 +117,9 @@ class WorkerService:
                     "aadhar_number":new.aadhar_number,
                     "city":new.city,
                     "state":new.state,
+                    "pincode":new.pincode,
+                    "status":new.status,
                     "address":new.address,
-                    "dob":new.dob,
                     "bank_acc_no":new.bank_acc_no,
                     "gender":new.gender,
                     "available_Days":new.available_Days,
@@ -135,13 +139,13 @@ class WorkerService:
                 "message": "Email or Phone Number already exists. Please use new one.",
             }
             return response_object, 409
-        
+
 
 
     @staticmethod
     def delete_worker(id):
         worker= Worker.query.filter_by(id=id).first()
-        
+
         if worker:
             Worker.delete(worker)
             response_object = {
@@ -155,12 +159,12 @@ class WorkerService:
                 "message": "Worker does not exists.",
             }
             return response_object, 409
-        
+
 
     @staticmethod
     def update_worker(id,data):
         user= Worker.query.filter_by(id=id).first()
-        
+
         if user:
             user.email = data.get('email', user.email)
             user.phone_number = data.get('phone_number', user.phone_number)
@@ -169,8 +173,9 @@ class WorkerService:
             user.aadhar_number = data.get('aadhar_number', user.aadhar_number)
             user.city = data.get('city', user.city)
             user.state = data.get('state', user.state)
+            user.pincode = data.get('pincode', user.pincode)
+            user.status = data.get('status', user.status)
             user.address = data.get('address', user.address)
-            user.dob = data.get('dob', user.dob)
             user.bank_acc_no = data.get('bank_acc_no', user.bank_acc_no)
             user.gender = data.get('gender', user.gender)
             user.available_Days = data.get('available_Days', user.available_Days)
@@ -180,7 +185,7 @@ class WorkerService:
             user.salary = data.get('salary', user.salary)
             user.hash_password = generate_password_hash(data.get('hash_password', user.hash_password))
 
-            
+
 
             new = Worker.update(user)
             response_object = {
@@ -192,9 +197,10 @@ class WorkerService:
                     "first_name":new.first_name,
                     "aadhar_number":new.aadhar_number,
                     "city":new.city,
+                    "status":new.status,
+                    "pincode":new.pincode,
                     "state":new.state,
                     "address":new.address,
-                    "dob":new.dob,
                     "bank_acc_no":new.bank_acc_no,
                     "gender":new.gender,
                     "available_Days":new.available_Days,
@@ -215,10 +221,10 @@ class WorkerService:
                 "message": "Worker details not found.",
             }
             return response_object, 409
-        
+
     @staticmethod
     def login(auth):
-    
+
         if not auth or not auth.get('email') or not auth.get('hash_password'):
             response_object = {
                 "test":"details not found",
@@ -235,8 +241,11 @@ class WorkerService:
         if user is None:
             user = User.query.filter_by(email = auth.get('email'))\
             .first()
-            role="User"
-        
+            if user is None:
+                role = "No User"
+            else:
+                role=user.role
+
         if not user:
             response_object = {
                 "test":"user not found",
@@ -246,9 +255,9 @@ class WorkerService:
                 'WWW-Authenticate' : 'Basic realm ="Login required !!"'
             }
             return response_object
-        
+
         if check_password_hash(user.hash_password,auth.get('hash_password')):
-           
+
             token = jwt.encode({
                 'public_id': user.public_id,
                 'exp' : datetime.utcnow() + timedelta(minutes = 120)
@@ -257,10 +266,12 @@ class WorkerService:
             response_object = {
                 'id':user.id,
                 'token' : token,
-                'role': role 
+                'role': role,
+                'first_name':user.first_name,
+                'last_name':user.last_name
             }
             return response_object
-        
+
         else:
             response_object= {
                 'WWW-Authenticate' : 'Basic realm ="Wrong Password !!"',
@@ -268,10 +279,10 @@ class WorkerService:
                 'msg':"InCorrect Password"
                 }
             return response_object
-    
 
-        
-        
+
+
+
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -280,7 +291,7 @@ def token_required(f):
             token = request.headers['x-access-token']
         if not token:
             return jsonify({'message' : 'Token is missing !!'}), 401
-  
+
         try:
             data = jwt.decode(token, Config.SECRET_KEY, algorithms=['HS256'])
             current_user = Worker.query\
@@ -291,5 +302,5 @@ def token_required(f):
                 'message' : 'Token is invalid !!'
             }), 401
         return  f(current_user, *args, **kwargs)
-  
+
     return decorated

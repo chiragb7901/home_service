@@ -14,10 +14,11 @@ class Worker(db.Model):
     aadhar_number = db.Column(db.String(50), nullable=False)
     city = db.Column(db.String(50))
     state = db.Column(db.String(50))
+    pincode = db.Column(db.String(50))
     address = db.Column(db.String(255))
+    status = db.Column(db.String(50))
     created_at =  db.Column(db.DateTime, default=datetime.utcnow,nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow,nullable=False)
-    dob = db.Column(db.DateTime)
     bank_acc_no = db.Column(db.String(50), nullable=False)
     gender = db.Column(db.String(50), nullable=False)
     hash_password = db.Column(db.String(255), nullable=False)
@@ -44,15 +45,16 @@ class Worker(db.Model):
        db.session.commit()
        return self
 
-    def __init__(self, email, public_id, phone_number, first_name, last_name, city, state, address, dob, hash_password, aadhar_number, bank_acc_no, gender, available_Days, available_Hours, preferred_work, type_of_work, salary):
+    def __init__(self, email, public_id, phone_number, first_name, last_name, city, state, address, hash_password, aadhar_number, bank_acc_no, gender, available_Days, available_Hours, preferred_work, type_of_work, salary, pincode, status):
         self.email = email
+        self.pincode = pincode
+        self.status = status
         self.phone_number = phone_number
         self.first_name = first_name
         self.last_name = last_name
         self.city = city
         self.state = state
         self.address = address
-        self.dob = dob
         self.hash_password = hash_password
         self.aadhar_number = aadhar_number
         self.bank_acc_no = bank_acc_no

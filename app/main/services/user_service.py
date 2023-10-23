@@ -17,6 +17,7 @@ class UserService:
             user_dict['public_id'] = user.public_id
             user_dict['id'] = user.id
             user_dict['email'] = user.email
+            user_dict['pincode'] = user.pincode
             user_dict['phone_number'] = user.phone_number
             user_dict['last_name'] = user.last_name
             user_dict['first_name'] = user.first_name
@@ -41,6 +42,7 @@ class UserService:
             user_dict = {}
             user_dict['public_id'] = user.public_id
             user_dict['id'] = user.id
+            user_dict['pincode'] = user.pincode
             user_dict['email'] = user.email
             user_dict['phone_number'] = user.phone_number
             user_dict['last_name'] = user.last_name
@@ -70,8 +72,9 @@ class UserService:
                 first_name=data["first_name"],
                 city=data["city"],
                 state=data["state"],
+                pincode=data["pincode"],
                 address=data["address"],
-                role="User",
+                role="Admin",
                 hash_password=generate_password_hash(password)
             )
             new = User.create(new_user)
@@ -85,6 +88,7 @@ class UserService:
                     "city":new.city,
                     "state":new.state,
                     "address":new.address,
+                    "pincode":new.pincode,
                     "hash_password":new.hash_password,
                     "id":new.id,
                     "role":new.role,
@@ -132,6 +136,7 @@ class UserService:
             user.city = data.get('city', user.city)
             user.state = data.get('state', user.state)
             user.address = data.get('address', user.address)
+            user.pincode = data.get('pincode', user.pincode)
             user.hash_password = generate_password_hash(data.get('hash_password', user.hash_password))
             user.role = generate_password_hash(data.get('role', user.role))
 
@@ -148,6 +153,7 @@ class UserService:
                     "address":new.address,
                     "hash_password":new.hash_password,
                     "id":new.id,
+                    "pincode":new.pincode,
                     "role":new.role,
                 },
                 "message": "Successfully updated.",

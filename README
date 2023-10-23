@@ -32,3 +32,6 @@ Add the utility functions in the 'utils' folder.
 ### To change the DB settings 
 1. Open the settings.py in the root folder
 2. Change the database URI in SQLALCHEMY_DATABASE_URI based on the development env
+
+
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://chiragB79:chirag123@chiragB79.mysql.pythonanywhere-services.com:3306/home_service_dev'
