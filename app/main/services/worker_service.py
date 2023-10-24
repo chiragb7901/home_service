@@ -78,6 +78,74 @@ class WorkerService:
 
             worker_entities_list.append(user_dict)
         return worker_entities_list
+    
+
+    @staticmethod
+    def get_pending_worker_serv():
+        worker_entities = Worker.query.filter_by(status='Pending')
+        worker_entities_list = []
+
+        for user in worker_entities:
+            user_dict = {}
+            user_dict['public_id'] = user.public_id
+            user_dict['id'] = user.id
+            user_dict['email'] = user.email
+            user_dict['phone_number'] = user.phone_number
+            user_dict['last_name'] = user.last_name
+            user_dict['first_name'] = user.first_name
+            user_dict['aadhar_number'] = user.aadhar_number
+            user_dict['city'] = user.city
+            user_dict['state'] = user.state
+            user_dict['address'] = user.address
+            user_dict['created_at'] = user.created_at
+            user_dict['updated_at'] = user.updated_at
+            user_dict['bank_acc_no'] = user.bank_acc_no
+            user_dict['gender'] = user.gender
+            user_dict['hash_password'] = user.hash_password
+            user_dict['available_Days'] = user.available_Days
+            user_dict['available_Hours'] = user.available_Hours
+            user_dict['preferred_work'] = user.preferred_work
+            user_dict['type_of_work'] = user.type_of_work
+            user_dict['salary'] = user.salary
+            user_dict['pincode'] = user.pincode
+            user_dict['status'] = user.status
+
+            worker_entities_list.append(user_dict)
+        return worker_entities_list
+    
+
+    @staticmethod
+    def get_Completed_worker():
+        worker_entities = Worker.query.filter_by(status='Completed')
+        worker_entities_list = []
+
+        for user in worker_entities:
+            user_dict = {}
+            user_dict['public_id'] = user.public_id
+            user_dict['id'] = user.id
+            user_dict['email'] = user.email
+            user_dict['phone_number'] = user.phone_number
+            user_dict['last_name'] = user.last_name
+            user_dict['first_name'] = user.first_name
+            user_dict['aadhar_number'] = user.aadhar_number
+            user_dict['city'] = user.city
+            user_dict['state'] = user.state
+            user_dict['address'] = user.address
+            user_dict['created_at'] = user.created_at
+            user_dict['updated_at'] = user.updated_at
+            user_dict['bank_acc_no'] = user.bank_acc_no
+            user_dict['gender'] = user.gender
+            user_dict['hash_password'] = user.hash_password
+            user_dict['available_Days'] = user.available_Days
+            user_dict['available_Hours'] = user.available_Hours
+            user_dict['preferred_work'] = user.preferred_work
+            user_dict['type_of_work'] = user.type_of_work
+            user_dict['salary'] = user.salary
+            user_dict['pincode'] = user.pincode
+            user_dict['status'] = user.status
+
+            worker_entities_list.append(user_dict)
+        return worker_entities_list
 
 
     @staticmethod
@@ -186,6 +254,49 @@ class WorkerService:
             user.hash_password = generate_password_hash(data.get('hash_password', user.hash_password))
 
 
+
+            new = Worker.update(user)
+            response_object = {
+                "status": "success",
+                "object":{
+                    "email":new.email,
+                    "phone_number":new.phone_number,
+                    "last_name":new.last_name,
+                    "first_name":new.first_name,
+                    "aadhar_number":new.aadhar_number,
+                    "city":new.city,
+                    "status":new.status,
+                    "pincode":new.pincode,
+                    "state":new.state,
+                    "address":new.address,
+                    "bank_acc_no":new.bank_acc_no,
+                    "gender":new.gender,
+                    "available_Days":new.available_Days,
+                    "available_Hours":new.available_Hours,
+                    "preferred_work":new.preferred_work,
+                    "type_of_work":new.type_of_work,
+                    "salary":new.salary,
+                    "hash_password":new.hash_password,
+                    "id":new.id,
+
+                },
+                "message": "Successfully updated.",
+            }
+            return response_object, 201
+        else:
+            response_object = {
+                "status": "fail",
+                "message": "Worker details not found.",
+            }
+            return response_object, 409
+        
+
+    @staticmethod
+    def update_worker_status(id):
+        user= Worker.query.filter_by(id=id).first()
+
+        if user:
+            user.status = "Completed"
 
             new = Worker.update(user)
             response_object = {

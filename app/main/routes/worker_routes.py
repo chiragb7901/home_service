@@ -19,6 +19,34 @@ def get_all_workers():
     return resp
 
 
+@worker.route('/v1/workers/pending', methods=['GET'])
+@token_required
+def get_pending_worker_route(current_user):
+
+    worker_entities = WorkerService().get_pending_worker_serv()
+
+    resp = {
+        'status': True,
+        'msg': 'Workers successfully fetched',
+        'data': worker_entities
+    }
+    return resp
+
+
+@worker.route('/v1/workers/completed', methods=['GET'])
+@token_required
+def get_Completed_worker(current_user):
+
+    worker_entities = WorkerService().get_Completed_worker()
+
+    resp = {
+        'status': True,
+        'msg': 'Workers successfully fetched',
+        'data': worker_entities
+    }
+    return resp
+
+
 @worker.route('/v1/worker/<id>', methods=['GET'])
 @token_required
 def get_worker_by_id(current_user,id):
@@ -78,6 +106,18 @@ def delete_worker(current_user,id):
 def update_worker(current_user,id):
     data = request.get_json()
     worker = WorkerService().update_worker(id,data)
+    resp = {
+        'status': True,
+        'msg': 'Worker details successfully fetched',
+        'data': worker
+    }
+    return resp
+
+
+@worker.route('/v1/worker/update/status/<id>', methods=['POST'])
+@token_required
+def update_status(current_user,id):
+    worker = WorkerService().update_worker_status(id)
     resp = {
         'status': True,
         'msg': 'Worker details successfully fetched',
