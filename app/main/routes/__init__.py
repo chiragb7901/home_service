@@ -2,6 +2,7 @@
 from .blueprint_test import bp
 from .worker_routes import worker
 from .user_routes import user
+from .booking_routes import booking
 
 
 def add_resources(app):
@@ -23,4 +24,5 @@ def register_blueprints(app):
     app.register_blueprint(bp)
     app.register_blueprint(worker)
     app.register_blueprint(user)
+    app.register_blueprint(booking)
     

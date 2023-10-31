@@ -29,7 +29,7 @@ class Worker(db.Model):
     preferred_work = db.Column(db.String(100), nullable=False)
     type_of_work = db.Column(db.String(100), nullable=False)
     salary = db.Column(db.Integer, nullable=False)
-    photo_urls = db.Column(db.String(1000))
+    photo_urls = db.Column(db.String(5000))
 
     def create(self):
        db.session.add(self)

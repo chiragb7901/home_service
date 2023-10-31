@@ -1,0 +1,886 @@
+{
+	"info": {
+		"_postman_id": "0d4ce3ae-f9ab-41ff-8449-3b8ada497c05",
+		"name": "Home Maid Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22944529",
+		"_collection_link": "https://lunar-trinity-256533.postman.co/workspace/My-Workspace~613309ee-4707-4a72-8817-2d8564563d3f/collection/22944529-0d4ce3ae-f9ab-41ff-8449-3b8ada497c05?action=share&source=collection_link&creator=22944529"
+	},
+	"item": [
+		{
+			"name": "Worker",
+			"item": [
+				{
+					"name": "get all workers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiIwMzRkYmQwMC0zOWJkLTRiYmQtOTVmMi1iMDI5MzYzNzQ5YTAiLCJleHAiOjE2OTc2NDEyNzF9.iWRXjDiX_vWqE886t4nRwPEKk1PrzOkZl4kPnM2FFKY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI5NWFiNzAzNy1hZTAyLTRjMTItYmY3MC0xNTg5YjUzMTIzOTgiLCJleHAiOjE2OTc4NTQxNjh9.-tBQyy2UMwXjmog5vFSOhY-p61z2HATO_ent7SvN6i8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/workers",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"workers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all pending workers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiIwMzRkYmQwMC0zOWJkLTRiYmQtOTVmMi1iMDI5MzYzNzQ5YTAiLCJleHAiOjE2OTc2NDEyNzF9.iWRXjDiX_vWqE886t4nRwPEKk1PrzOkZl4kPnM2FFKY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI5NWFiNzAzNy1hZTAyLTRjMTItYmY3MC0xNTg5YjUzMTIzOTgiLCJleHAiOjE2OTgwNDAzMTV9.utb_swAITX4Eif1tomXG30VAlNASy41EOQR3tfL2Xqo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/workers/pending",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"workers",
+								"pending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all completed workers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiIwMzRkYmQwMC0zOWJkLTRiYmQtOTVmMi1iMDI5MzYzNzQ5YTAiLCJleHAiOjE2OTc2NDEyNzF9.iWRXjDiX_vWqE886t4nRwPEKk1PrzOkZl4kPnM2FFKY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI5NWFiNzAzNy1hZTAyLTRjMTItYmY3MC0xNTg5YjUzMTIzOTgiLCJleHAiOjE2OTgwNDA4OTR9.RoPyf1Oqi5DAtlQToEvDjRdid2iBw6IxsFZ5Lga-bB0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/workers/completed",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"workers",
+								"completed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiIwMzRkYmQwMC0zOWJkLTRiYmQtOTVmMi1iMDI5MzYzNzQ5YTAiLCJleHAiOjE2OTc2NDEyNzF9.iWRXjDiX_vWqE886t4nRwPEKk1PrzOkZl4kPnM2FFKY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI5NWFiNzAzNy1hZTAyLTRjMTItYmY3MC0xNTg5YjUzMTIzOTgiLCJleHAiOjE2OTgwNDAzMTV9.utb_swAITX4Eif1tomXG30VAlNASy41EOQR3tfL2Xqo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/worker/update/status/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"worker",
+								"update",
+								"status",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get worker by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI2MWJlNjM5MS02ODM4LTQwMzctOWVlNi0wZDBlZmNhYTBiY2EiLCJleHAiOjE2OTg3NzA0MDl9.yqHDJ-fmzp-hh7yIRvA1JI6XpGOhpIgmvQ4bQ3-Mecw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/worker/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"worker",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add worker",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiIwYTcwZDEyMy05OTQyLTRhZmEtODQzMS1hZDdiODk1OTU4OTQiLCJleHAiOjE2OTc2NDA1MTN9.vCwvBAlj4kwFJl_nTcg3rcm2MaG3-vI5x_eJKgKZ6AA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"worker@gmail.com\",\r\n    \"phone_number\":\"239255434\",\r\n    \"last_name\":\"Bansod\",\r\n    \"first_name\":\"chirag\",\r\n    \"aadhar_number\":\"123456789798465321\",\r\n    \"city\":\"Nagpur\",\r\n    \"state\":\"Maharashtra\",\r\n    \"address\":\"Plot no 105b , bezonbagh housing society\",\r\n    \"dob\":\"2001-09-07\",\r\n    \"bank_acc_no\":\"12346547897\",\r\n    \"gender\":\"Male\",\r\n    \"available_Days\":4,\r\n    \"available_Hours\":8,\r\n    \"preferred_work\":\"full time\",\r\n    \"type_of_work\":\"gardening\",\r\n    \"salary\":12000,\r\n    \"hash_password\":\"123\",\r\n    \"role\":\"Worker\",\r\n    \"pincode\":\"987898\",\r\n    \"photo_urls\":[\"url1\",\"url2\",\"url3\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/signup",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiJhYzdhNzgzNy0wMDcwLTQzZjMtOGUzYi02ZmU0MjcxNWJhMjEiLCJleHAiOjE2OTc2NDA3MzN9.4C545PB1XzrNIJNJbYpthqUF3wT_dmHv5Qn9FPkB-sQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"hukum@123@gmail.com\",\r\n    \"hash_password\":\"Pass@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://chiragb79.pythonanywhere.com/v1/login",
+							"protocol": "http",
+							"host": [
+								"chiragb79",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Worker live",
+			"item": [
+				{
+					"name": "get all workers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://chiragb79.pythonanywhere.com/v1/workers",
+							"protocol": "https",
+							"host": [
+								"chiragb79",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"v1",
+								"workers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get worker by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/workers",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"workers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all pending workers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiIwMzRkYmQwMC0zOWJkLTRiYmQtOTVmMi1iMDI5MzYzNzQ5YTAiLCJleHAiOjE2OTc2NDEyNzF9.iWRXjDiX_vWqE886t4nRwPEKk1PrzOkZl4kPnM2FFKY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI5NWFiNzAzNy1hZTAyLTRjMTItYmY3MC0xNTg5YjUzMTIzOTgiLCJleHAiOjE2OTgwNDAzMTV9.utb_swAITX4Eif1tomXG30VAlNASy41EOQR3tfL2Xqo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://homeservice718.pythonanywhere.com/v1/workers/pending",
+							"protocol": "https",
+							"host": [
+								"homeservice718",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"v1",
+								"workers",
+								"pending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all completed workers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiIwMzRkYmQwMC0zOWJkLTRiYmQtOTVmMi1iMDI5MzYzNzQ5YTAiLCJleHAiOjE2OTc2NDEyNzF9.iWRXjDiX_vWqE886t4nRwPEKk1PrzOkZl4kPnM2FFKY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI5NWFiNzAzNy1hZTAyLTRjMTItYmY3MC0xNTg5YjUzMTIzOTgiLCJleHAiOjE2OTgwNDA4OTR9.RoPyf1Oqi5DAtlQToEvDjRdid2iBw6IxsFZ5Lga-bB0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://homeservice718.pythonanywhere.com/v1/workers/completed",
+							"protocol": "https",
+							"host": [
+								"homeservice718",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"v1",
+								"workers",
+								"completed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiIwMzRkYmQwMC0zOWJkLTRiYmQtOTVmMi1iMDI5MzYzNzQ5YTAiLCJleHAiOjE2OTc2NDEyNzF9.iWRXjDiX_vWqE886t4nRwPEKk1PrzOkZl4kPnM2FFKY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI5NWFiNzAzNy1hZTAyLTRjMTItYmY3MC0xNTg5YjUzMTIzOTgiLCJleHAiOjE2OTgwNDAzMTV9.utb_swAITX4Eif1tomXG30VAlNASy41EOQR3tfL2Xqo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://homeservice718.pythonanywhere.com/v1/worker/update/status/2",
+							"protocol": "https",
+							"host": [
+								"homeservice718",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"v1",
+								"worker",
+								"update",
+								"status",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add worker",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"chirag@gmail.com\",\r\n    \"phone_number\":\"123224547897\",\r\n    \"last_name\":\"Bansod\",\r\n    \"first_name\":\"chirag\",\r\n    \"aadhar_number\":\"123456789798465321\",\r\n    \"city\":\"Nagpur\",\r\n    \"state\":\"Maharashtra\",\r\n    \"address\":\"Plot no 105b , bezonbagh housing society\",\r\n    \"bank_acc_no\":\"12346547897\",\r\n    \"gender\":\"Male\",\r\n    \"available_Days\":4,\r\n    \"available_Hours\":8,\r\n    \"dob\": \"2023-10-25\",\r\n    \"preferred_work\":\"full time\",\r\n    \"type_of_work\":\"gardening\",\r\n    \"salary\":12000,\r\n    \"hash_password\":\"123\",\r\n    \"role\":\"Worker\",\r\n    \"pincode\":\"12346\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://chiragb79.pythonanywhere.com/v1/signup",
+							"protocol": "https",
+							"host": [
+								"chiragb79",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"v1",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"chirag@gmail.com\",\r\n    \"phone_number\":\"12345647897\",\r\n    \"last_name\":\"Bansod\",\r\n    \"first_name\":\"chirag\",\r\n    \"aadhar_number\":\"123456789798465321\",\r\n    \"city\":\"Nagpur\",\r\n    \"state\":\"Maharashtra\",\r\n    \"address\":\"Plot no 105b , bezonbagh housing society\",\r\n    \"dob\":\"2001-09-07\",\r\n    \"bank_acc_no\":\"12346547897\",\r\n    \"gender\":\"Male\",\r\n    \"available_Days\":4,\r\n    \"available_Hours\":8,\r\n    \"preferred_work\":\"full time\",\r\n    \"type_of_work\":\"gardening\",\r\n    \"salary\":12000,\r\n    \"hash_password\":\"123\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://chiragb79.pythonanywhere.com/v1/signup",
+							"protocol": "https",
+							"host": [
+								"chiragb79",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"v1",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"chirag@gmail.com\",\r\n    \"phone_number\":\"12345647897\",\r\n    \"last_name\":\"Bansod\",\r\n    \"first_name\":\"chirag\",\r\n    \"aadhar_number\":\"123456789798465321\",\r\n    \"city\":\"Nagpur\",\r\n    \"state\":\"Maharashtra\",\r\n    \"address\":\"Plot no 105b , bezonbagh housing society\",\r\n    \"dob\":\"2001-09-07\",\r\n    \"bank_acc_no\":\"12346547897\",\r\n    \"gender\":\"Male\",\r\n    \"available_Days\":4,\r\n    \"available_Hours\":8,\r\n    \"preferred_work\":\"full time\",\r\n    \"type_of_work\":\"gardening\",\r\n    \"salary\":12000,\r\n    \"hash_password\":\"123\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/signup",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "get all users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiIwMzRkYmQwMC0zOWJkLTRiYmQtOTVmMi1iMDI5MzYzNzQ5YTAiLCJleHAiOjE2OTc2NDEyNzF9.iWRXjDiX_vWqE886t4nRwPEKk1PrzOkZl4kPnM2FFKY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI4YjdhNDEyMS1iZDI2LTQ1ZTgtOTdiMS0zZDY3MTBhYzZkYmEiLCJleHAiOjE2OTcxMjQ3NzZ9.REtmDTMqh5cb1HZv_7rHViQtkWPKlYcrqBxJEVpoA4s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://chiragb79.pythonanywhere.com/v1/users",
+							"protocol": "http",
+							"host": [
+								"chiragb79",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"address\": \"q\",\r\n\"city\": \"q\",\r\n\"email\": \"hukum1234@gmail.com\",\r\n\"first_name\": \"hkumu\",\r\n\"hash_password\": \"Pass@123\",\r\n\"last_name\": \"narwre\",\r\n\"phone_number\": \"1234565891\",\r\n\"pincode\": \"q\",\r\n\"role\": \"User\",\r\n\"state\": \"q\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://chiragb79.pythonanywhere.com/v1/signup",
+							"protocol": "http",
+							"host": [
+								"chiragb79",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"v1",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI2MWJlNjM5MS02ODM4LTQwMzctOWVlNi0wZDBlZmNhYTBiY2EiLCJleHAiOjE2OTg3NjY0ODh9.GbSQ5PBZe26gUqRLYLlJoSJ0w8BHWqNJNnwrB2gKJy8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiJmMmQ5NGEzNC1kMTU2LTQ4MGMtOThlNy1kYTk3MzY3YTE4Y2UiLCJleHAiOjE2OTc3MTEzODR9.YEr1zdiEpb8CJ4QIGcxVwb_eM_ozs_e-gNPQ296wQL4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://homeservice718.pythonanywhere.com/v1/users",
+							"protocol": "http",
+							"host": [
+								"homeservice718",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI2MWJlNjM5MS02ODM4LTQwMzctOWVlNi0wZDBlZmNhYTBiY2EiLCJleHAiOjE2OTg3NjY0ODh9.GbSQ5PBZe26gUqRLYLlJoSJ0w8BHWqNJNnwrB2gKJy8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/bookings",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all pending",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI2MWJlNjM5MS02ODM4LTQwMzctOWVlNi0wZDBlZmNhYTBiY2EiLCJleHAiOjE2OTg3NjY0ODh9.GbSQ5PBZe26gUqRLYLlJoSJ0w8BHWqNJNnwrB2gKJy8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/booking/pending",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"booking",
+								"pending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all completed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI2MWJlNjM5MS02ODM4LTQwMzctOWVlNi0wZDBlZmNhYTBiY2EiLCJleHAiOjE2OTg3NjY0ODh9.GbSQ5PBZe26gUqRLYLlJoSJ0w8BHWqNJNnwrB2gKJy8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/booking/completed",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"booking",
+								"completed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI2MWJlNjM5MS02ODM4LTQwMzctOWVlNi0wZDBlZmNhYTBiY2EiLCJleHAiOjE2OTg3NjY0ODh9.GbSQ5PBZe26gUqRLYLlJoSJ0w8BHWqNJNnwrB2gKJy8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/booking/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI2MWJlNjM5MS02ODM4LTQwMzctOWVlNi0wZDBlZmNhYTBiY2EiLCJleHAiOjE2OTg3NjY0ODh9.GbSQ5PBZe26gUqRLYLlJoSJ0w8BHWqNJNnwrB2gKJy8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":2,\r\n    \"worker_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/bookings",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI2MWJlNjM5MS02ODM4LTQwMzctOWVlNi0wZDBlZmNhYTBiY2EiLCJleHAiOjE2OTg3NjY0ODh9.GbSQ5PBZe26gUqRLYLlJoSJ0w8BHWqNJNnwrB2gKJy8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/v1/booking/update/status/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"booking",
+								"update",
+								"status",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJsaWNfaWQiOiI1ZWI4ODM4OS0wNmIxLTQ1ZjItOWU2NC00Mzk5OTBiNTgxODAiLCJleHAiOjE2OTgyODc1OTd9.LLaAHaJkyF7plc-5orRpqPaoyKvST8l5dP3qmQYv9EI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
