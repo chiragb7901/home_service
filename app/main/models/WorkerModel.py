@@ -1,5 +1,6 @@
 from app.main import db
 from datetime import datetime
+import json
 
 class Worker(db.Model):
 
@@ -15,6 +16,7 @@ class Worker(db.Model):
     city = db.Column(db.String(50))
     state = db.Column(db.String(50))
     pincode = db.Column(db.String(50))
+    dob = db.Column(db.String(50))
     address = db.Column(db.String(255))
     status = db.Column(db.String(50))
     created_at =  db.Column(db.DateTime, default=datetime.utcnow,nullable=False)
@@ -27,7 +29,7 @@ class Worker(db.Model):
     preferred_work = db.Column(db.String(100), nullable=False)
     type_of_work = db.Column(db.String(100), nullable=False)
     salary = db.Column(db.Integer, nullable=False)
-
+    photo_urls = db.Column(db.String(1000))
 
     def create(self):
        db.session.add(self)
@@ -45,9 +47,10 @@ class Worker(db.Model):
        db.session.commit()
        return self
 
-    def __init__(self, email, public_id, phone_number, first_name, last_name, city, state, address, hash_password, aadhar_number, bank_acc_no, gender, available_Days, available_Hours, preferred_work, type_of_work, salary, pincode, status):
+    def __init__(self,dob ,email, photo_urls,public_id, phone_number, first_name, last_name, city, state, address, hash_password, aadhar_number, bank_acc_no, gender, available_Days, available_Hours, preferred_work, type_of_work, salary, pincode, status):
         self.email = email
-        self.pincode = pincode
+        self.photo_urls = json.dumps(photo_urls)
+        self.dob = dob
         self.status = status
         self.phone_number = phone_number
         self.first_name = first_name
@@ -65,6 +68,9 @@ class Worker(db.Model):
         self.type_of_work = type_of_work
         self.salary = salary
         self.public_id = public_id
+
+    def get_photo_urls(self, photo_urls):   
+        return json.loads(photo_urls) if self.photo_urls else []
 
     def __repr__(self):
         return "<{}:{}>".format(id, self.first_name + " " + self.last_name)

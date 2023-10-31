@@ -22,6 +22,7 @@ class UserService:
             user_dict['last_name'] = user.last_name
             user_dict['first_name'] = user.first_name
             user_dict['city'] = user.city
+            user_dict['dob'] = user.dob
             user_dict['state'] = user.state
             user_dict['address'] = user.address
             user_dict['hash_password'] = user.hash_password
@@ -48,6 +49,7 @@ class UserService:
             user_dict['last_name'] = user.last_name
             user_dict['first_name'] = user.first_name
             user_dict['city'] = user.city
+            user_dict['dob'] = user.dob
             user_dict['state'] = user.state
             user_dict['address'] = user.address
             user_dict['hash_password'] = user.hash_password
@@ -70,11 +72,12 @@ class UserService:
                 phone_number=data["phone_number"],
                 last_name=data["last_name"],
                 first_name=data["first_name"],
+                dob = data.get('dob', "-"),
                 city=data["city"],
                 state=data["state"],
                 pincode=data["pincode"],
                 address=data["address"],
-                role="Admin",
+                role="User",
                 hash_password=generate_password_hash(password)
             )
             new = User.create(new_user)
@@ -87,6 +90,7 @@ class UserService:
                     "first_name":new.first_name,
                     "city":new.city,
                     "state":new.state,
+                    "dob":new.dob,
                     "address":new.address,
                     "pincode":new.pincode,
                     "hash_password":new.hash_password,
@@ -137,6 +141,7 @@ class UserService:
             user.state = data.get('state', user.state)
             user.address = data.get('address', user.address)
             user.pincode = data.get('pincode', user.pincode)
+            user.dob = data.get('dob', user.dob)
             user.hash_password = generate_password_hash(data.get('hash_password', user.hash_password))
             user.role = generate_password_hash(data.get('role', user.role))
 
@@ -150,6 +155,7 @@ class UserService:
                     "first_name":new.first_name,
                     "city":new.city,
                     "state":new.state,
+                    "dob":new.dob,
                     "address":new.address,
                     "hash_password":new.hash_password,
                     "id":new.id,

@@ -21,7 +21,10 @@ class WorkerService:
             user_dict = {}
             user_dict['public_id'] = user.public_id
             user_dict['id'] = user.id
+            # user_dict['photo_urls'] = user.photo_urls
+            user_dict['photo_urls'] = user.get_photo_urls(user.photo_urls)
             user_dict['email'] = user.email
+            user_dict['dob'] = user.dob
             user_dict['phone_number'] = user.phone_number
             user_dict['last_name'] = user.last_name
             user_dict['first_name'] = user.first_name
@@ -55,8 +58,11 @@ class WorkerService:
             user_dict = {}
             user_dict['public_id'] = user.public_id
             user_dict['id'] = user.id
+            # user_dict['photo_urls'] = user.photo_urls
+            user_dict['photo_urls'] = user.get_photo_urls(user.photo_urls)
             user_dict['email'] = user.email
             user_dict['phone_number'] = user.phone_number
+            user_dict['dob'] = user.dob
             user_dict['last_name'] = user.last_name
             user_dict['first_name'] = user.first_name
             user_dict['aadhar_number'] = user.aadhar_number
@@ -90,10 +96,12 @@ class WorkerService:
             user_dict['public_id'] = user.public_id
             user_dict['id'] = user.id
             user_dict['email'] = user.email
+            user_dict['photo_urls'] = user.get_photo_urls(user.photo_urls)
             user_dict['phone_number'] = user.phone_number
             user_dict['last_name'] = user.last_name
             user_dict['first_name'] = user.first_name
             user_dict['aadhar_number'] = user.aadhar_number
+            user_dict['dob'] = user.dob
             user_dict['city'] = user.city
             user_dict['state'] = user.state
             user_dict['address'] = user.address
@@ -128,6 +136,7 @@ class WorkerService:
             user_dict['last_name'] = user.last_name
             user_dict['first_name'] = user.first_name
             user_dict['aadhar_number'] = user.aadhar_number
+            user_dict['photo_urls'] = user.get_photo_urls(user.photo_urls)
             user_dict['city'] = user.city
             user_dict['state'] = user.state
             user_dict['address'] = user.address
@@ -137,6 +146,7 @@ class WorkerService:
             user_dict['gender'] = user.gender
             user_dict['hash_password'] = user.hash_password
             user_dict['available_Days'] = user.available_Days
+            user_dict['dob'] = user.dob
             user_dict['available_Hours'] = user.available_Hours
             user_dict['preferred_work'] = user.preferred_work
             user_dict['type_of_work'] = user.type_of_work
@@ -158,7 +168,9 @@ class WorkerService:
                 email=data["email"],
                 phone_number=data["phone_number"],
                 last_name=data["last_name"],
+                photo_urls=data["photo_urls"],
                 first_name=data["first_name"],
+                dob=data["dob"],
                 aadhar_number=data["aadhar_number"],
                 city=data["city"],
                 state=data["state"],
@@ -187,8 +199,10 @@ class WorkerService:
                     "state":new.state,
                     "pincode":new.pincode,
                     "status":new.status,
+                    "dob":new.dob,
                     "address":new.address,
                     "bank_acc_no":new.bank_acc_no,
+                    "photo_urls":new.photo_urls,
                     "gender":new.gender,
                     "available_Days":new.available_Days,
                     "available_Hours":new.available_Hours,
@@ -209,6 +223,9 @@ class WorkerService:
             return response_object, 409
 
 
+    
+    def convert_photo_urls(photo_urls_json):
+        return json.loads(photo_urls_json) if photo_urls_json else []
 
     @staticmethod
     def delete_worker(id):
@@ -241,6 +258,7 @@ class WorkerService:
             user.aadhar_number = data.get('aadhar_number', user.aadhar_number)
             user.city = data.get('city', user.city)
             user.state = data.get('state', user.state)
+            user.dob = data.get('dob', user.dob)
             user.pincode = data.get('pincode', user.pincode)
             user.status = data.get('status', user.status)
             user.address = data.get('address', user.address)
@@ -277,6 +295,8 @@ class WorkerService:
                     "type_of_work":new.type_of_work,
                     "salary":new.salary,
                     "hash_password":new.hash_password,
+                    "photo_urls":new.photo_urls,
+                    "dob":new.dob,
                     "id":new.id,
 
                 },
@@ -309,6 +329,7 @@ class WorkerService:
                     "aadhar_number":new.aadhar_number,
                     "city":new.city,
                     "status":new.status,
+                    "dob":new.dob,
                     "pincode":new.pincode,
                     "state":new.state,
                     "address":new.address,
@@ -318,6 +339,7 @@ class WorkerService:
                     "available_Hours":new.available_Hours,
                     "preferred_work":new.preferred_work,
                     "type_of_work":new.type_of_work,
+                    "photo_urls":new.photo_urls,
                     "salary":new.salary,
                     "hash_password":new.hash_password,
                     "id":new.id,
