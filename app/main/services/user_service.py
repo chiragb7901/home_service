@@ -143,7 +143,7 @@ class UserService:
             user.pincode = data.get('pincode', user.pincode)
             user.dob = data.get('dob', user.dob)
             user.hash_password = generate_password_hash(data.get('hash_password', user.hash_password))
-            user.role = generate_password_hash(data.get('role', user.role))
+            user.role = data.get('role', user.role)
 
             new = User.update(user)
             response_object = {

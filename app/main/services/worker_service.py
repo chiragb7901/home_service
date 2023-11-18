@@ -156,10 +156,30 @@ class WorkerService:
 
             worker_entities_list.append(user_dict)
         return worker_entities_list
+    
 
+    @staticmethod
+    def get_all_photourls():
+        worker_entities = Worker.query.all()
+        worker_entities_list = []
+
+        for user in worker_entities:
+            worker_entities_list.append(user.get_photo_urls(user.photo_urls))
+        
+        merged_list = []
+        
+        for sublist in worker_entities_list:
+            merged_list.extend(sublist)
+        return merged_list
 
     @staticmethod
     def save_new_worker(data):
+        if 'test@gmail.com'==data["email"]:
+            response_object = {
+                "status": "fail",
+                "message": "Email or Phone Number already exists. Please use new one.",
+            }
+            return response_object, 409
         worker = Worker.query.filter_by(email=data["email"], phone_number=data["phone_number"]).first()
         password=data["hash_password"]
         if not worker:

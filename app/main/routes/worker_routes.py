@@ -60,6 +60,18 @@ def get_worker_by_id(current_user,id):
     }
     return resp
 
+@worker.route('/v1/worker/photourls', methods=['GET'])
+def get_all_photo_urls():
+
+    worker_entities = WorkerService().get_all_photourls()
+
+    resp = {
+        'status': True,
+        'msg': 'Worker successfully fetched',
+        'data': worker_entities
+    }
+    return resp
+
 @worker.route('/v1/signup', methods=['POST'])
 def save_new_worker():
     data = request.get_json()

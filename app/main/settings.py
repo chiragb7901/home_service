@@ -1,7 +1,7 @@
 import os
 #from environs import Env, EnvError
 
-postgres_local_base = "path"
+# postgres_local_base = "path"
 # postgres_local_base= "path"
 # #env = Env()
 #env.read_env()
@@ -14,9 +14,9 @@ class Config:
 
 class DevelopmentConfig(Config):
     # uncomment the line below to use postgres
-    SQLALCHEMY_DATABASE_URI = postgres_local_base
+    # SQLALCHEMY_DATABASE_URI = postgres_local_base
     # uncomment the line below to use mysql
-    # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost:3306/home1'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost:3306/home1'
 
     DEBUG = True
     # SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(
@@ -36,7 +36,7 @@ class ProductionConfig(Config):
     DEBUG = False
 
     # uncomment the line below to use postgres
-    SQLALCHEMY_DATABASE_URI = postgres_local_base
+    # SQLALCHEMY_DATABASE_URI = postgres_local_base
 
 config_by_name = dict(
     dev=DevelopmentConfig,
